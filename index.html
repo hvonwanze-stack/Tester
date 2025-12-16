@@ -11,6 +11,7 @@ body {
     font-family: "Cinzel", serif;
     background: #050505;
     color: #ddd;
+    overflow-x: hidden;
 }
 
 /* ===== Titel ===== */
@@ -44,7 +45,7 @@ nav a {
 
 nav a:hover {
     color: crimson;
-    text-shadow: 0 0 8px crimson;
+    text-shadow: 0 0 10px crimson;
 }
 
 /* ===== Layout ===== */
@@ -55,7 +56,7 @@ nav a:hover {
     padding: 40px;
 }
 
-/* ===== Textspalten ===== */
+/* ===== Text ===== */
 .text {
     line-height: 1.7;
     font-size: 1rem;
@@ -67,12 +68,46 @@ nav a:hover {
     top: 120px;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .center-image img {
-    width: 280px; /* Bild etwas kleiner */
-    max-width: 100%;
-    filter: drop-shadow(0 0 25px crimson);
+    width: 260px;
+    filter: drop-shadow(0 0 30px crimson);
+    transition: transform 0.4s ease;
+}
+
+/* ===== Rauch-Effekt ===== */
+.smoke {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(200,200,200,0.12), transparent 70%);
+    pointer-events: none;
+    animation: smoke 6s infinite ease-in-out;
+}
+
+@keyframes smoke {
+    0% { transform: translateY(0) scale(1); opacity: 0.3; }
+    50% { transform: translateY(-80px) scale(1.2); opacity: 0.15; }
+    100% { transform: translateY(-160px) scale(1.4); opacity: 0; }
+}
+
+/* ===== Vollbild ===== */
+#fullscreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+#fullscreen img {
+    max-width: 90%;
+    max-height: 90%;
+    filter: drop-shadow(0 0 40px crimson);
 }
 
 /* ===== Mobile ===== */
@@ -85,62 +120,3 @@ nav a:hover {
         position: relative;
         margin: 30px 0;
     }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <h1>DIE SCHATTEN</h1>
-</header>
-
-<nav>
-    <a href="#">Archiv</a>
-    <a href="#">Orden</a>
-    <a href="#">Ränge</a>
-    <a href="#">Chroniken</a>
-</nav>
-
-<div class="container">
-
-    <div class="text">
-        <h2>Linker Text</h2>
-        <p>
-            Die Schatten existieren jenseits der bekannten Ordnung.
-            Sie beobachten, lenken und tilgen aus dem Verborgenen.
-            l
-        </p>
-        <p>
-            Ihre Ursprünge sind in vergessenen Archiven versiegelt.
-            Nur wenige kennen ihre wahre Aufgabe.
-        </p>
-        <p>
-            Wer ihren Ruf hört, ist bereits Teil des Spiels.
-        </p>
-    </div>
-
-    <div class="center-image">
-        <img src="schatten.png" alt="Die Schatten">
-    </div>
-
-    <div class="text">
-        <h2>Rechter Text</h2>
-        <p>
-            Der Schattenlord herrscht ohne Gesicht,
-            ohne Namen, nur durch Zeichen.
-        </p>
-        <p>
-            Befehle werden geflüstert,
-            nicht geschrieben.
-        </p>
-        <p>
-            Loyalität ist Pflicht.
-            Zweifel ist Verrat.
-        </p>
-    </div>
-
-</div>
-
-</body>
-</html>
