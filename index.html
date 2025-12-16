@@ -79,28 +79,6 @@ nav a:hover {
     z-index: 1;
 }
 
-/* Rauch-Effekt */
-.smoke {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    pointer-events: none;
-    background: url('https://i.ibb.co/YbYqfY5/smoke.png') no-repeat center;
-    background-size: cover;
-    opacity: 0.2;
-    animation: rise 8s linear infinite;
-    z-index: 0;
-}
-
-@keyframes rise {
-    0% { transform: translate(-50%, 50%) scale(0.8); opacity: 0.1; }
-    50% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-    100% { transform: translate(-50%, -150%) scale(1.2); opacity: 0; }
-}
-
 /* ===== Mobile ===== */
 @media (max-width: 900px) {
     .container {
@@ -147,7 +125,6 @@ nav a:hover {
 
     <div class="center-image">
         <img src="schatten.png" alt="Die Schatten">
-        <div class="smoke"></div>
     </div>
 
     <div class="text">
