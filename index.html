@@ -72,7 +72,7 @@ nav a:hover {
 }
 
 .center-image img {
-    width: 400px; /* Bild jetzt größer */
+    width: 280px;
     max-width: 100%;
     filter: drop-shadow(0 0 25px crimson);
     position: relative;
@@ -108,4 +108,56 @@ nav a:hover {
 
 <div class="container">
 
-    <div
+    <div class="text">
+        <h2>Linker Text</h2>
+        <p>
+            Die Schatten existieren jenseits der bekannten Ordnung.
+            Sie beobachten, lenken und tilgen aus dem Verborgenen.
+        </p>
+        <p>
+            Ihre Ursprünge sind in vergessenen Archiven versiegelt.
+            Nur wenige kennen ihre wahre Aufgabe.
+        </p>
+        <p>
+            Wer ihren Ruf hört, ist bereits Teil des Spiels.
+        </p>
+    </div>
+
+    <div class="center-image">
+        <img src="schatten.png" alt="Die Schatten">
+    </div>
+
+    <div class="text">
+        <h2>Rechter Text</h2>
+        <p>
+            Der Schattenlord herrscht ohne Gesicht,
+            ohne Namen, nur durch Zeichen.
+        </p>
+        <p>
+            Befehle werden geflüstert,
+            nicht geschrieben.
+        </p>
+        <p>
+            Loyalität ist Pflicht.
+            Zweifel ist Verrat.
+        </p>
+    </div>
+
+</div>
+
+<!-- Sound beim Hover -->
+<audio id="hoverSound" src="hover-sound.mp3"></audio>
+
+<script>
+// Sound beim Hover
+const sound = document.getElementById('hoverSound');
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        sound.currentTime = 0;
+        sound.play();
+    });
+});
+</script>
+
+</body>
+</html>
