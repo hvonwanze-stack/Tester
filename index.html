@@ -6,6 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+:root {
+    --max-width: 1200px;
+}
+
 body {
     margin: 0;
     font-family: "Cinzel", serif;
@@ -21,7 +25,7 @@ header {
 }
 
 header h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
     letter-spacing: 4px;
     color: #cfcfcf;
     text-shadow: 0 0 15px crimson;
@@ -31,9 +35,10 @@ header h1 {
 nav {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: clamp(15px, 4vw, 40px);
     padding: 15px;
     border-bottom: 1px solid #222;
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -41,7 +46,6 @@ nav a {
     text-decoration: none;
     font-size: 1.1rem;
     transition: 0.3s;
-    cursor: pointer;
 }
 
 nav a:hover {
@@ -51,24 +55,25 @@ nav a:hover {
 
 /* ===== Layout ===== */
 .container {
+    max-width: var(--max-width);
+    margin: auto;
     display: grid;
-    grid-template-columns: 1fr 320px 1fr;
+    grid-template-columns: 1fr minmax(200px, 320px) 1fr;
     gap: 30px;
-    padding: 40px;
-}.
-
-/* ===== Textspalten ===== */
-.text {
-    line-height: 1.7;
-    font-size: 1rem;
+    padding: 40px 20px;
 }
 
-/* ===== Rechter Text rechtsbündig ===== */
+/* ===== Text ===== */
+.text {
+    line-height: 1.7;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+}
+
 .text-right {
     text-align: right;
 }
 
-/* ===== Bild fixiert ===== */
+/* ===== Bild ===== */
 .center-image {
     position: sticky;
     top: 120px;
@@ -77,22 +82,31 @@ nav a:hover {
 }
 
 .center-image img {
-    width: 6000px;      /* Bild Größe */
-    max-width: 260%;    /* Bild Größe */
+    width: 100%;
+    max-width: 280px;
+    height: auto;
     filter: drop-shadow(0 0 25px crimson);
-    position: relative;
-    z-index: 1;
 }
 
-/* ===== Mobile ===== */
+/* ===== Mobile Anpassung (gleiches Layout, nur schmaler) ===== */
 @media (max-width: 900px) {
     .container {
         grid-template-columns: 1fr;
+        text-align: center;
     }
-    
+
+    .text-right {
+        text-align: center;
+    }
+
     .center-image {
         position: relative;
+        top: 0;
         margin: 30px 0;
+    }
+
+    .center-image img {
+        max-width: 220px;
     }
 }
 </style>
@@ -150,11 +164,9 @@ nav a:hover {
 
 </div>
 
-<!-- Sound beim Hover -->
 <audio id="hoverSound" src="hover-sound.mp3"></audio>
 
 <script>
-// Sound beim Hover
 const sound = document.getElementById('hoverSound');
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('mouseenter', () => {
